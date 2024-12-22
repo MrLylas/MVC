@@ -1,0 +1,39 @@
+Définir une classe abstraite : 
+
+Une classe définie comme abstraite ne peut être instanciée et toute classe contenant
+au moins une méthode abstraite doit elle aussi être abstraite.
+Les méthodes définies comme abstraites se contentent de déclarer la signature de la méthode 
+et d'indiquer si elle est publique ou protégée ; elles ne peuvent pas définir l'implémentation.
+
+Exemple : Si nous avons une classe abstraite Animal avec une méthode abstraite manger(), 
+toutes les classes enfants comme Chien ou Chat devront implémenter leur propre version de manger().
+Cela garantit que chaque animal saura comment manger, même si la façon de le faire varie d'un animal à l'autre. 
+
+****************************************************************************************************************
+
+
+Définir une fonction statique : 
+
+Une fonction statique est une fonction que l'on peut acceder sans avoir à instancier la classe
+On aura donc pas besoin du __construct ni du $this->
+
+****************************************************************************************************************
+
+
+Définir PDO :
+C'est une interface Orientée objet pour interagir avec des bases de données en PHP.
+Elle permet d'avoir un code plus sécurisé, plus propre et plus portable.
+
+****************************************************************************************************************
+
+
+Pourquoi utiliser PDO plutôt que mySQLi:
+
+Premièrement, PDO peut se connecter à plusieurs types de base données(MySQL,Oracle,SQLite...) 
+Alors que MySQLi est limité à MySQL.
+
+Deuxièmement, PDO propose une meilleure gestion des erreurs grâce à l'option PDO::ERRMODE_EXEPTION
+Il est donc plus facile de gérer ses erreurs
+
+Et enfin les fetch modes qui permettent de récupérer des résultats sous forme de tableaux associatif, d'objet, ou de tableau indexé.
+
