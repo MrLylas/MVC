@@ -17,14 +17,14 @@ class PersonController {
 
         require "view/listActeurs.php";}
 
-    public function listCategory(){
+    public function infoComedian(){
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
             SELECT type_name
             FROM movie_type
         ");
- 
+    
         require "view/listCategory.php";}
 
 }
