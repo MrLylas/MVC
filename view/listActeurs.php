@@ -11,10 +11,10 @@
     </thead>
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $film){ ?>
+            foreach($requete->fetchAll() as $actors){ ?>
                 <tr>
-                    <td><?=$film["comedian_name"]?></td>
-                    <td><?=$film["movie_name"]?></td>
+                    <td><?=$actors["movie_name"]?></td>
+                    <td><?=$actors["release_date"]?></td>
                 </tr>
            <?php } ?>
     </tbody>
