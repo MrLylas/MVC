@@ -21,11 +21,19 @@ class PersonController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT type_name
-            FROM movie_type
+            SELECT 
+                person_name,
+                    person_forename,
+                    nationality,
+                    birth_date,gender,
+                    poster
+                FROM comedian com
+                INNER JOIN person per
+                ON com.id_comedian = per.id_person
         ");
     
-        require "view/listCategory.php";}
+        require "view/comedianInfo.php";}
+    
 
 
 }

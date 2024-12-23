@@ -20,7 +20,8 @@ use Controller\CinemaController;
         case "listFilms" : $ctrlCinema->listFilms();break;
         case "listActeurs" : $ctrlPerson->listActeurs();break;
         case "listCategory" : $ctrlCinema->listCategory();break;
-        case "Comedianinfo" : $ctrlPerson->infoComedian();break;
+        case "comedianInfo" : $ctrlPerson->infoComedian();break;
+        case "filmInfo" : $ctrlCinema->infoFilm();break;
 
     }
  }
