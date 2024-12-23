@@ -3,18 +3,8 @@
 namespace Controller;
 use Model\Connect;
 
-class CinemaController {
+class PersonController {
 
-    public function listfilms(){
-
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-            SELECT movie_name, release_date
-            FROM movie
-        ");  
-        
-        require "view/listFilms.php";
-    }
     public function listActeurs(){
     
         $pdo = Connect::seConnecter();
@@ -27,7 +17,7 @@ class CinemaController {
 
         require "view/listActeurs.php";}
 
-    public function listCat(){
+    public function listCategory(){
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
@@ -35,7 +25,7 @@ class CinemaController {
             FROM movie_type
         ");
  
-    }
+        require "view/listCategory.php";}
 
 }
 

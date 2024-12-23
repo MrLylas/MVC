@@ -7,11 +7,19 @@ use Controller\CinemaController;
 
  $ctrlCinema = new CinemaController();
 
+ use Controller\PersonController;
+ spl_autoload_register(function($class_name){
+    include $class_name.'.php';
+ });
+
+ $ctrlPerson = new PersonController();
+
  if(isset($_GET["action"])){
     switch ($_GET["action"]){
 
         case "listFilms" : $ctrlCinema->listFilms();break;
-        case "listActeurs" : $ctrlCinema->listActeurs();break;
+        case "listActeurs" : $ctrlPerson->listActeurs();break;
+        case "listCategory" : $ctrlPerson->listCategory();break;
 
     }
  }

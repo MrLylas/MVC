@@ -5,16 +5,14 @@
 <table class="movieTable">
     <thead>
         <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
+            <th>Categories</th>
         </tr>
     </thead>
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $actors){ ?>
+            foreach($requete->fetchAll() as $category){ ?>
                 <tr>
-                    <td><?=$actors["person_name"]?></td>
-                    <td><?=$actors["person_forename"]?></td>
+                    <td><?=$category["type_name"]?></td>
                 </tr>
            <?php } ?>
     </tbody>
@@ -22,7 +20,7 @@
 
 <?php
 
-$titre = "Liste des films";
-$titre_secondaire = "Liste des acteurs";
+$titre = "Liste des categories";
+$titre_secondaire = "Liste des categories";
 $contenu = ob_get_clean();
 require "view/template.php";

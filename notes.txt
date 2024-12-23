@@ -37,3 +37,5 @@ Il est donc plus facile de gérer ses erreurs
 
 Et enfin les fetch modes qui permettent de récupérer des résultats sous forme de tableaux associatif, d'objet, ou de tableau indexé.
 
+
+

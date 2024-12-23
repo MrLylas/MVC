@@ -13,8 +13,8 @@
         <?php
             foreach($requete->fetchAll() as $film){ ?>
                 <tr>
-                    <td><?=$film["comedian_name"]?></td>
                     <td><?=$film["movie_name"]?></td>
+                    <td><?=$film["release_date"]?></td>
                 </tr>
            <?php } ?>
     </tbody>
