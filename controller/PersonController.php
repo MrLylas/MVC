@@ -27,5 +27,6 @@ class PersonController {
     
         require "view/listCategory.php";}
 
+
 }
 
