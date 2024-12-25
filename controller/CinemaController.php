@@ -16,24 +16,15 @@ class CinemaController {
         require "view/listFilms.php";
     }
 
-    public function listCategory(){
-
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-            SELECT type_name
-            FROM movie_type
-        ");
- 
-        require "view/listCategory.php";
- 
-    }
 
     public function infoFilm(){
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
             SELECT 
-                mov.movie_name,mov.release_date,ROUND(mov.duration / 60, 2) AS hours_duration ,per.person_name,per.person_forename 
+                mov.movie_name,mov.release_date,
+                ROUND(mov.duration / 60, 2) AS hours_duration ,
+                per.person_name,per.person_forename 
             FROM 
                 movie mov
             INNER JOIN 

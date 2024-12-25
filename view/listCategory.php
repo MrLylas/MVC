@@ -18,6 +18,10 @@
     </tbody>
 </table>
 
+<a href="http://mvc.test/index.php?action=addTypeForm">
+    <div class="btnAddCat">Add Category</div>
+</a>
+
 <?php
 
 $titre = "Liste des categories";
