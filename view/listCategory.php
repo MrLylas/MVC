@@ -19,7 +19,7 @@
 </table>
 
 <a href="http://mvc.test/index.php?action=addTypeForm">
-    <div class="btnAddCat">Add Category</div>
+    <div class="btnAdd">Add Category</div>
 </a>
 
 <?php

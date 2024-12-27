@@ -20,7 +20,7 @@ class TypeController {
     
     public function addTypeForm(){
 
-        require "view/addTypeForm.php";
+        require "view/form/addTypeForm.php";
     }
 
     public function addType(){
@@ -43,7 +43,7 @@ class TypeController {
                 header("Location:index.php?action=listFilms");
             }
         }
-        require "view/listTypes.php";
+        require "view/listCategory.php";
     }
 
 }

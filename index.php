@@ -35,6 +35,8 @@ use Controller\CinemaController;
         case "comedianInfo" : $ctrlPerson->infoComedian();break;
         case "addTypeForm" : $ctrlCategory->addTypeForm();break;
         case "addType" : $ctrlCategory->addType();break;
+        case "addComedianForm" : $ctrlPerson->addComedianForm();break;
+      //   case "addType" : $ctrlCategory->addType();break;
         
 
     }

@@ -19,6 +19,9 @@
            <?php } ?>
     </tbody>
 </table>
+<a href="http://mvc.test/index.php?action=addComedianForm">
+    <div class="btnAdd">Add Comedian</div>
+</a>
 
 <?php
 

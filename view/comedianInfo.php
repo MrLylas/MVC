@@ -5,8 +5,7 @@
 <table class="movieTable">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Forename</th>
+            <th>Comedian</th>
             <th>Nationality</th>
             <th>Birth date</th>
             <th>Gender</th>
@@ -16,8 +15,7 @@
         <?php
             foreach($requete->fetchAll() as $actors){ ?>
                 <tr>
-                    <td><?=$actors["person_name"]?></td>
-                    <td><?=$actors["person_forename"]?></td>
+                    <td><?=$actors["person_forename"]." ".$actors["person_name"]?></td>
                     <td><?=$actors["nationality"]?></td>
                     <td><?=$actors["birth_date"]?></td>
                     <td><?=$actors["gender"]?></td>

@@ -5,8 +5,10 @@
 <table class="movieTable">
     <thead>
         <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
+            <th>Movie</th>
+            <th>Release date</th>
+            <th>Duration</th>
+            <th>Director</th>
         </tr>
     </thead>
     <tbody>
@@ -16,8 +18,7 @@
                     <td><?=$movie["movie_name"]?></td>
                     <td><?=$movie["release_date"]?></td>
                     <td><?=$movie["hours_duration"]?></td>
-                    <td><?=$movie["person_name"]?></td>
-                    <td><?=$movie["person_forename"]?></td>
+                    <td><?=$movie["person_name"]." ".$movie["person_forename"]?></td>
                 </tr>
            <?php } ?>
     </tbody>
