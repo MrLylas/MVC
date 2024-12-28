@@ -5,6 +5,8 @@ use Model\Connect;
 
 class PersonController {
 
+    //Fonction servant à lister les Acterus de la BDD
+
     public function listActeurs(){
     
         $pdo = Connect::seConnecter();
@@ -16,6 +18,9 @@ class PersonController {
         ");  
 
         require "view/listActeurs.php";}
+
+
+    //Fonction servant à lister les informations sur les Acteurs de la BDD
 
     public function infoComedian(){
 
@@ -32,43 +37,57 @@ class PersonController {
                 ON com.id_comedian = per.id_person
         ");
     
-        require "view/comedianInfo.php";}
+        require "view/info/comedianInfo.php";}
 
     public function addComedianForm(){
 
         require "view/form/addComedianForm.php";
     }
 
-    public function addType(){
+    //Fonction servant à ajouter un Comedien à la BDD
+
+    public function addComedian(){
+
+        //Lors de l'appui du bouton submit lancer la condition :
 
         if(isset($_POST['submit'])){
 
-            $NewComedian = filter_input(INPUT_POST,"ComedianName",FILTER_SANITIZE_SPECIAL_CHARS);
-                            filter_input(INPUT_POST,"ComedianForename",FILTER_SANITIZE_SPECIAL_CHARS);
-                            filter_input(INPUT_POST,"ComedianNationality",FILTER_SANITIZE_SPECIAL_CHARS);
-                            filter_input(INPUT_POST,"ComedianBirthdate",FILTER_SANITIZE_SPECIAL_CHARS);
-                            filter_input(INPUT_POST,"ComedianGender",FILTER_SANITIZE_SPECIAL_CHARS);
+            //Application des filtres sur les données récupérées du formulaires
 
-            if($NewComedian){
+            $ComedianName = filter_input(INPUT_POST,"ComedianName",FILTER_SANITIZE_SPECIAL_CHARS);
+            $ComedianForename = filter_input(INPUT_POST,"ComedianForename",FILTER_SANITIZE_SPECIAL_CHARS);
+            $ComedianNationality = filter_input(INPUT_POST,"ComedianNationality",FILTER_SANITIZE_SPECIAL_CHARS);
+            $ComedianBirthdate = filter_input(INPUT_POST,"ComedianBirthdate",FILTER_SANITIZE_SPECIAL_CHARS);
+            $ComedianGender = filter_input(INPUT_POST,"ComedianGender",FILTER_SANITIZE_SPECIAL_CHARS);
+
+            //la condition se lance si les données entrée entrées sont valides : 
+
+            if($ComedianName && $ComedianForename && $ComedianNationality && $ComedianBirthdate && $ComedianGender){
+
+                //Préparation de la requête :
+
                 $pdo = Connect :: seConnecter();
                 $addComedian = $pdo->prepare("
                     INSERT INTO person (person_name, person_forename, nationality, birth_date, gender)
                     VALUES (:ComedianName, :ComedianForename,:ComedianNationality,:ComedianBirthdate,:ComedianGender);
 
-                    -- Récupérer l'identifiant de la personne insérée
                     SET @new_person_id = LAST_INSERT_ID();
 
-                    -- Insérer dans la table `comedian` en utilisant l'identifiant récupéré
                     INSERT INTO comedian (id_person)
                     VALUES (@new_person_id);
 
                 ");
+
+                //Execution de la requête :
             
-                $addComedian->execute(["ComedianName"=>$NewComedian]);
-                $addComedian->execute(["ComedianForename"=>$NewComedian]);
-                $addComedian->execute(["ComedianNationality"=>$NewComedian]);
-                $addComedian->execute(["ComedianBirthdate"=>$NewComedian]);
-                $addComedian->execute(["ComedianGender"=>$NewComedian]);
+                $addComedian->execute([
+                    "ComedianName"=>$ComedianName,
+                    "ComedianForename"=>$ComedianForename,
+                    "ComedianNationality"=>$ComedianNationality,
+                    "ComedianBirthdate"=>$ComedianBirthdate,
+                    "ComedianGender"=>$ComedianGender
+                ]);
+
 
                 header("Location:index.php?action=listActeurs");
             }

@@ -35,8 +35,57 @@ class CinemaController {
             ON dir.id_person = per.id_person
         ");
 
-        require "view/filmInfo.php";
+        require "view/info/filmInfo.php";
  
+    }
+
+    public function addMovieForm(){
+
+        require "view/form/addMovieForm.php";
+    }
+
+    public function addMovie(){
+
+        //Lors de l'appui du bouton submit lancer la condition :
+
+        if(isset($_POST['submit'])){
+
+            //Application des filtres sur les données récupérées du formulaires
+
+            $movieName = filter_input(INPUT_POST,"MovieName",FILTER_SANITIZE_SPECIAL_CHARS);
+            $duration = filter_input(INPUT_POST,"Duration",FILTER_SANITIZE_SPECIAL_CHARS);
+            $releaseDate = filter_input(INPUT_POST,"ReleaseDate",FILTER_SANITIZE_SPECIAL_CHARS);
+            $synopsis = filter_input(INPUT_POST,"Synopsis",FILTER_SANITIZE_SPECIAL_CHARS);
+            $rating = filter_input(INPUT_POST,"Rating",FILTER_SANITIZE_SPECIAL_CHARS);
+
+            //la condition se lance si les données entrée entrées sont valides : 
+
+            if($movieName && $director && $duration && $releaseDate && $synopsis && $rating){
+
+                //Préparation de la requête :
+
+                $pdo = Connect :: seConnecter();
+                $addMovie = $pdo->prepare("
+                    INSERT INTO movie (movie_name, release_date, duration, synopsis, rating)
+                    VALUES (:MovieName,:ReleaseDate,:Duration,:Synopsis,:Rating);
+
+                ");
+
+                //Execution de la requête :
+            
+                $addMovie->execute([
+                    "MovieName"=>$movieName,
+                    "Duration"=>$duration,
+                    "ReleaseDate"=>$releaseDate,
+                    "Synopsis"=>$synopsis,
+                    "Rating"=>$rating
+                ]);
+
+
+                header("Location:index.php?action=listFilms");
+            }
+        }
+        require "view/listFilms.php";
     }
 
 }
