@@ -28,16 +28,28 @@ use Controller\CinemaController;
  if(isset($_GET["action"])){
     switch ($_GET["action"]){
 
+         //List
+
         case "listFilms" : $ctrlCinema->listFilms();break;
         case "listActeurs" : $ctrlPerson->listActeurs();break;
         case "listCategory" : $ctrlCategory->listCategory();break;
+        case "listDirector" : $ctrlPerson->listDirectors();break;
+
+        //Info
+
         case "filmInfo" : $ctrlCinema->infoFilm();break;
         case "comedianInfo" : $ctrlPerson->infoComedian();break;
+
+        //Form
+
         case "addTypeForm" : $ctrlCategory->addTypeForm();break;
-        case "addType" : $ctrlCategory->addType();break;
         case "addComedianForm" : $ctrlPerson->addComedianForm();break;
-        case "addComedian" : $ctrlPerson->addComedian();break;
         case "addMovieForm" : $ctrlCinema->addMovieForm();break;
+
+        //Add
+
+        case "addType" : $ctrlCategory->addType();break;
+        case "addComedian" : $ctrlPerson->addComedian();break;
         case "addMovie" : $ctrlCinema->addMovie();break;
 
     }

@@ -12,6 +12,7 @@
         <h2><?=$titre_secondaire?></h2>
         <div class="menu">
             <a href="http://mvc.test/index.php?action=listActeurs"><div class="btnMenu">Acteurs</div></a>
+            <a href="http://mvc.test/index.php?action=listDirector"><div class="btnMenu">Directors</div></a>
             <a href="http://mvc.test/index.php?action=listFilms"><div class="btnMenu">Films</div></a>
             <a href="http://mvc.test/index.php?action=listCategory"><div class="btnMenu">Catégories</div></a>
             <a href="http://mvc.test/index.php?action=comedianInfo"><div class="btnMenu">Infos Comédiens</div></a>

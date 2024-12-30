@@ -18,7 +18,13 @@
     <input type="number" name="Rating" id="Rating" min="1" max="10"><br>
 
     <label for="Director">Director</label>
-    <input type="number" name="Director" id="Director" min="1" max="10"><br>
+        <select id="Director" name="Director">
+            <?php foreach ($listDirectors->fetchAll() as $director) { ?>
+            <option value="<?=$director["Director"]?>">
+                <?=$director["complete_name"]?>
+            </option>
+            <?php } ?>
+        </select>
 
     <label for="Type">Type</label>
     <input type="number" name="Type" id="Type" min="1" max="10"><br>

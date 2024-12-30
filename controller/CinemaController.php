@@ -13,7 +13,7 @@ class CinemaController {
             FROM movie
         ");  
         
-        require "view/listFilms.php";
+        require "view/list/listFilms.php";
     }
 
 
@@ -86,7 +86,7 @@ class CinemaController {
                 echo "Veuillez remplir tous les champs correctement.";
             }
         }
-        require "view/listFilms.php";
+        require "view/list/listFilms.php";
     }
     
 

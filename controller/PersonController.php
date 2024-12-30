@@ -17,7 +17,21 @@ class PersonController {
             ON com.id_person = per.id_person
         ");  
 
-        require "view/listActeurs.php";}
+        require "view/list/listActeurs.php";}
+
+    public function listDirectors(){
+
+        $pdo = Connect::seConnecter();
+        $listDirectors = $pdo->query("
+            SELECT dir.id_director, per.id_person, CONCAT(person_forename,' ',person_name) AS complete_name
+            FROM director dir
+            INNER JOIN person per
+            ON dir.id_person = per.id_person 
+            GROUP BY dir.id_director
+            ORDER BY per.person_name
+        ");  
+
+        require "view/list/listDirector.php";}
 
 
     //Fonction servant à lister les informations sur les Acteurs de la BDD

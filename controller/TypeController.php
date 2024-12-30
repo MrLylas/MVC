@@ -13,7 +13,7 @@ class TypeController {
             FROM movie_type
         ");
     
-        require "view/listCategory.php";
+        require "view/list/listCategory.php";
     
     }
 
@@ -43,7 +43,7 @@ class TypeController {
                 header("Location:index.php?action=listFilms");
             }
         }
-        require "view/listCategory.php";
+        require "view/list/listCategory.php";
     }
 
 }
