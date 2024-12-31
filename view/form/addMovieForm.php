@@ -1,5 +1,6 @@
 <?php ob_start();?>
 
+
 <form action="index.php?action=addMovie" method="post">
 
     <label for="Name">Movie name</label>
@@ -18,11 +19,12 @@
     <input type="number" name="Rating" id="Rating" min="1" max="10"><br>
 
     <label for="Director">Director</label>
-        <select id="Director" name="Director">
-            <?php foreach ($listDirectors->fetchAll() as $director) { ?>
-            <option value="<?=$director["Director"]?>">
-                <?=$director["complete_name"]?>
-            </option>
+        <select id="Director" name="id_director">
+            <?php
+            while ($director = $directors->fetch()) {
+            ?>  
+            <option value='<?=$director['id_director']?>'><?=$director['director']?></option>
+            
             <?php } ?>
         </select>
 
@@ -34,7 +36,7 @@
 
 <?php
 
-$titre = "Movie Form";
-$titre_secondaire = "Movie Form";
+$titre = "Comedian List";
+$titre_secondaire = "Comedian List";
 $contenu = ob_get_clean();
 require "view/template.php";

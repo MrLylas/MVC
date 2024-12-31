@@ -27,8 +27,6 @@ class PersonController {
             FROM director dir
             INNER JOIN person per
             ON dir.id_person = per.id_person 
-            GROUP BY dir.id_director
-            ORDER BY per.person_name
         ");  
 
         require "view/list/listDirector.php";}
