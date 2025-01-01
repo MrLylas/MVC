@@ -52,7 +52,7 @@ class CinemaController {
             $duration = filter_input(INPUT_POST, "Duration", FILTER_VALIDATE_INT);
             $synopsis = filter_input(INPUT_POST, "Synopsis", FILTER_SANITIZE_SPECIAL_CHARS);
             $rating = filter_input(INPUT_POST, "Rating", FILTER_VALIDATE_INT, ["options" => ["min_range" => 1, "max_range" => 10]]);
-            $director = filter_input(INPUT_POST, "Director", FILTER_VALIDATE_INT);
+            $director = filter_input(INPUT_POST, "Director", FILTER_SANITIZE_SPECIAL_CHARS);
             $type = filter_input(INPUT_POST, "Type", FILTER_VALIDATE_INT);
     
             // Vérification des données

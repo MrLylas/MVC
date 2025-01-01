@@ -25,6 +25,13 @@ use Controller\CinemaController;
 
  $ctrlCategory = new TypeController();
 
+ use Controller\MainPageController;
+ spl_autoload_register(function($class_name){
+    include $class_name.'.php';
+ });
+
+ $ctrlMainPage = new MainPageController();
+
  if(isset($_GET["action"])){
     switch ($_GET["action"]){
 
@@ -34,6 +41,7 @@ use Controller\CinemaController;
         case "listActeurs" : $ctrlPerson->listActeurs();break;
         case "listCategory" : $ctrlCategory->listCategory();break;
         case "listDirector" : $ctrlPerson->listDirectors();break;
+        case "mainPage" : $ctrlMainPage->mainPage();break;
 
         //Info
 

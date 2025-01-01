@@ -8,7 +8,8 @@
 </head>
 <body>
     <nav class="navbar">
-        <h1>PDO Cinema</h1>
+        
+        <a href="http://mvc.test/index.php?action=mainPage"><h1>PDO Cinema</h1></a>
         <h2><?=$titre_secondaire?></h2>
         <div class="menu">
             <a href="http://mvc.test/index.php?action=listActeurs"><div class="btnMenu">Acteurs</div></a>
