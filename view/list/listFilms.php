@@ -19,7 +19,7 @@
            <?php } ?>
     </tbody>
 </table>
-<a href="http://mvc.test/index.php?action=addMovieForm">
+<a href="index.php?action=addMovieForm">
     <div class="btnAdd">Add Movie</div>
 </a>
 

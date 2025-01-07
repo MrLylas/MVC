@@ -2,6 +2,7 @@
 
 namespace Controller;
 use Model\Connect;
+use PDOException;
 
 class CinemaController {
 
@@ -40,6 +41,12 @@ class CinemaController {
     }
 
     public function addMovieForm(){
+
+        $pdo = Connect::seConnecter();
+
+        $directors = $pdo->query("SELECT dir.id_director, concat(per.person_name,' ',per.person_forename) AS full_name FROM director dir INNER JOIN person per ON dir.id_person = per.id_person");
+
+        $types = $pdo->query(" SELECT id_type,type_name FROM movie_type ");
 
         require "view/form/addMovieForm.php";
     }

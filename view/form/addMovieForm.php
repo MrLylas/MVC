@@ -1,6 +1,5 @@
 <?php ob_start();?>
 
-
 <form action="index.php?action=addMovie" method="post">
 
     <label for="Name">Movie name</label>
@@ -21,22 +20,31 @@
     <label for="Director">Director</label>
         <select id="Director" name="id_director">
             <?php
-            while ($director = $directors->fetch()) {
+            foreach ($directors->fetchall() as $director) {
             ?>  
-            <option value='<?=$director['id_director']?>'><?=$director['director']?></option>
+            <option value='<?=$director['id_director']?>'><?=$director['full_name']?></option>
             
-            <?php } ?>
+            <?php }?> 
         </select>
 
     <label for="Type">Type</label>
-    <input type="number" name="Type" id="Type" min="1" max="10"><br>
+    <select id="Type" name="id_type">
+            <?php
+            foreach ($types->fetchall() as $type) {
+            ?>  
+            <option value='<?=$type['id_type']?>'><?=$type['type_name']?></option>
+            
+            <?php }?> 
+        </select>
 
     <input type="submit" name="submit" id="submit">
 </form>
 
+
+
 <?php
 
-$titre = "Comedian List";
-$titre_secondaire = "Comedian List";
+$titre = "Form Movie";
+$titre_secondaire = "Form Movie";
 $contenu = ob_get_clean();
 require "view/template.php";
