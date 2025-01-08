@@ -47,6 +47,7 @@ use Controller\CinemaController;
 
         case "filmInfo" : $ctrlCinema->infoFilm($_GET["id"]);break;
         case "comedianInfo" : $ctrlPerson->comedianInfo($_GET["id"]);break;
+        case "DirectorInfo" : $ctrlPerson->DirectorInfo($_GET["id"]);break;
 
 
         //Form

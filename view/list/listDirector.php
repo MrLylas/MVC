@@ -1,21 +1,15 @@
 <?php ob_start();?>
 
 
-<table class="movieTable">
-    <thead>
-        <tr>
-            <th>Directors</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($listDirectors->fetchAll() as $directors){ ?>
-                <tr>
-                    <td><?=$directors["complete_name"]?></td>
-                </tr>
-           <?php } ?>
-    </tbody>
-</table>
+<?php
+    foreach($listDirectors->fetchAll() as $director){ ?>
+
+        <a href="index.php?action=DirectorInfo&id=<?= $director['id_director'] ?>">
+            <?=$director["complete_name"]?>
+        </a>
+
+<?php } ?>
+
 
 <a href="index.php?action=addDirectorForm">
     <div class="btnAdd">Add Director</div>

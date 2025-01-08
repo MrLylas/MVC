@@ -59,6 +59,34 @@ class PersonController {
         require "view/info/comedianInfo.php";
     }
 
+
+    public function DirectorInfo($id) {
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+        SELECT CONCAT(person_forename,' ',person_name) AS person_fullname, per.gender, per.birth_date
+        FROM director dir
+        INNER JOIN person per 
+        ON per.id_person = dir.id_person
+        where dir.id_director = :id");
+    
+        $requete->execute(["id"=>$id]);
+
+        $DirectorMovieInfo=$pdo->prepare("
+                SELECT mov.movie_name, mov.duration, mov.rating, mov.release_date, mov.movie_poster, mov.id_movie
+        FROM comedian com
+        INNER JOIN person per ON per.id_person = com.id_person
+        INNER JOIN have hav ON hav.id_comedian = com.id_comedian
+        INNER JOIN movie mov ON mov.id_movie = hav.id_movie
+      	WHERE com.id_comedian = :id");
+
+
+        $DirectorMovieInfo->execute(["id"=>$id]);
+
+    
+        require "view/info/DirectorInfo.php";
+    }
+
     public function addComedianForm(){
 
         require "view/form/addComedianForm.php";
