@@ -19,10 +19,10 @@ class CinemaController {
 
 
     public function infoFilm($id){
-        
+
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-        SELECT mov.movie_name,mov.release_date,ROUND(mov.duration / 60, 2) AS hours_duration ,per.person_name,per.person_forename 
+        SELECT mov.movie_name,mov.release_date,ROUND(mov.duration / 60, 2) AS hours_duration ,per.person_name,per.person_forename,movie_poster,rating
         FROM movie mov
         INNER JOIN director dir 
         ON mov.id_director = dir.id_director

@@ -9,10 +9,10 @@
     <tbody>
         <?php
             foreach($requete->fetchAll() as $category){ ?>
-                <tr>
-                    <td><?=$category["type_name"]?></td>
-                </tr>
-           <?php } ?>
+            <a href="index.php?action=ByCategory&id=<?= $category["id_type"] ?>">
+                <?=$category["type_name"]?>
+            </a>
+        <?php } ?>
     </tbody>
 </table>
 
