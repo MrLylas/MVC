@@ -17,6 +17,9 @@
     </tbody>
 </table>
 
+<a href="index.php?action=addDirectorForm">
+    <div class="btnAdd">Add Director</div>
+</a>
 
 <?php
 

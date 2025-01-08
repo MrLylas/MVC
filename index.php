@@ -38,27 +38,30 @@ use Controller\CinemaController;
          //List
 
         case "listFilms" : $ctrlCinema->listFilms();break;
-        case "listActeurs" : $ctrlPerson->listActeurs();break;
         case "listCategory" : $ctrlCategory->listCategory();break;
         case "listDirector" : $ctrlPerson->listDirectors();break;
+        case "listActeurs" : $ctrlPerson->listActeurs();break;
         case "mainPage" : $ctrlMainPage->mainPage();break;
 
         //Info
 
         case "filmInfo" : $ctrlCinema->infoFilm();break;
-        case "comedianInfo" : $ctrlPerson->infoComedian();break;
+        case "comedianInfo" : $ctrlPerson->comedianInfo($_GET["id"]);break;
+
 
         //Form
 
         case "addTypeForm" : $ctrlCategory->addTypeForm();break;
         case "addComedianForm" : $ctrlPerson->addComedianForm();break;
         case "addMovieForm" : $ctrlCinema->addMovieForm();break;
+        case "addDirectorForm" : $ctrlPerson->addDirectorForm();break;
 
         //Add
 
         case "addType" : $ctrlCategory->addType();break;
         case "addComedian" : $ctrlPerson->addComedian();break;
         case "addMovie" : $ctrlCinema->addMovie();break;
+        case "addDirector" : $ctrlPerson->addDirector();break;
 
     }
  }

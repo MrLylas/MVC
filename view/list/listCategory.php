@@ -1,7 +1,5 @@
 <?php ob_start();?>
 
-<p class="movieCount">Il y a <?=$requete->rowCount()?> films</p>
-
 <table class="movieTable">
     <thead>
         <tr>
@@ -18,7 +16,7 @@
     </tbody>
 </table>
 
-<a href="http://mvc.test/index.php?action=addTypeForm">
+<a href="index.php?action=addTypeForm">
     <div class="btnAdd">Add Category</div>
 </a>
 

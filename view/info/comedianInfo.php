@@ -1,33 +1,24 @@
 <?php ob_start();?>
 
-<p class="movieCount">Il y a <?=$requete->rowCount()?> films</p>
 
 <table class="movieTable">
-    <thead>
-        <tr>
-            <th>Comedian</th>
-            <th>Nationality</th>
-            <th>Birth date</th>
-            <th>Gender</th>
-        </tr>
-    </thead>
+
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $actors){ ?>
-                <tr>
-                    <td><?=$actors["person_forename"]." ".$actors["person_name"]?></td>
-                    <td><?=$actors["nationality"]?></td>
-                    <td><?=$actors["birth_date"]?></td>
-                    <td><?=$actors["gender"]?></td>
-                    <td><?=$actors["poster"]?></td>
-                </tr>
-           <?php } ?>
+foreach($requete->fetchAll() as $actor) { ?>
+    <div class="actor">
+        <?= $actor["person_fullname"]?>
+        <?= $actor["gender"]?>
+        <?= $actor["birth_date"]?>
+    </div>
+<?php } ?>
     </tbody>
 </table>
 
 <?php
 
-$titre = "Liste des films";
-$titre_secondaire = "Liste des acteurs";
+$titre = "Infos Acteurs";
+$titre_secondaire = "Infos Acteurs";
 $contenu = ob_get_clean();
 require "view/template.php";
+
