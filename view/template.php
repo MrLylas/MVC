@@ -16,8 +16,6 @@
             <a href="index.php?action=listDirector"><div class="btnMenu">Directors</div></a>
             <a href="index.php?action=listFilms"><div class="btnMenu">Films</div></a>
             <a href="index.php?action=listCategory"><div class="btnMenu">Catégories</div></a>
-            <a href="index.php?action=comedianInfo"><div class="btnMenu">Infos Comédiens</div></a>
-            <a href="index.php?action=filmInfo"><div class="btnMenu">Infos film</div></a>
         </div>
     </nav><br>
         <div id="wrapper">

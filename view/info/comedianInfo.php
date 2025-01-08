@@ -1,9 +1,6 @@
 <?php ob_start();?>
 
 
-<table class="movieTable">
-
-    <tbody>
         <?php
 foreach($requete->fetchAll() as $actor) { ?>
     <div class="actor">
@@ -11,9 +8,20 @@ foreach($requete->fetchAll() as $actor) { ?>
         <?= $actor["gender"]?>
         <?= $actor["birth_date"]?>
     </div>
+    <?php } ?>
+    <?php
+foreach($ComedianMovieInfo->fetchAll() as $movie) { ?>
+    <div class="movie">
+        <?= $movie["movie_poster"]?>
+        
+        <p><?= $movie["movie_name"]?></p>
+        <p><?= $movie["duration"]?> min</p>
+        <p><?= $movie["rating"]?>/10</p>
+        <p><?= $movie["release_date"]?></p><br>
+    </div>
 <?php } ?>
     </tbody>
-</table>
+
 
 <?php
 

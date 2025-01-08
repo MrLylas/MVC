@@ -2,23 +2,17 @@
 
 <p class="movieCount">Il y a <?=$requete->rowCount()?> films</p>
 
-<table class="movieTable">
-    <thead>
+
+<?php
+    foreach($requete->fetchAll() as $film){ ?>
         <tr>
-            <th>TITRE</th>
-            <th>ANNEE SORTIE</th>
+        <a href="index.php?action=filmInfo&id=<?= $film['id_movie'] ?>">
+            <?=$film["movie_name"]?>
+            <?=$film["release_date"]?>
+        </a>
         </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($requete->fetchAll() as $film){ ?>
-                <tr>
-                    <td><?=$film["movie_name"]?></td>
-                    <td><?=$film["release_date"]?></td>
-                </tr>
-           <?php } ?>
-    </tbody>
-</table>
+<?php } ?>
+
 <a href="index.php?action=addMovieForm">
     <div class="btnAdd">Add Movie</div>
 </a>

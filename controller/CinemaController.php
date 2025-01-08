@@ -10,7 +10,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT movie_name, release_date
+            SELECT movie_name, release_date, id_movie
             FROM movie
         ");  
         
@@ -18,23 +18,19 @@ class CinemaController {
     }
 
 
-    public function infoFilm(){
-
+    public function infoFilm($id){
+        
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-            SELECT 
-                mov.movie_name,mov.release_date,
-                ROUND(mov.duration / 60, 2) AS hours_duration ,
-                per.person_name,per.person_forename 
-            FROM 
-                movie mov
-            INNER JOIN 
-                director dir 
-            ON mov.id_director = dir.id_director
-            INNER JOIN 
-                person per 
-            ON dir.id_person = per.id_person
-        ");
+        $requete = $pdo->prepare("
+        SELECT mov.movie_name,mov.release_date,ROUND(mov.duration / 60, 2) AS hours_duration ,per.person_name,per.person_forename 
+        FROM movie mov
+        INNER JOIN director dir 
+        ON mov.id_director = dir.id_director
+        INNER JOIN person per
+        ON dir.id_person = per.id_person
+        WHERE mov.id_movie = :id");
+    
+        $requete->execute(["id"=>$id]);
 
         require "view/info/filmInfo.php";
  

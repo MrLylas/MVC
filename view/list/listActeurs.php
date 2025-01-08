@@ -15,6 +15,10 @@
     </tbody>
 </table>
 
+<a href="index.php?action=addComedianForm">
+    <div class="btnAdd">Add Comedian</div>
+</a>
+
 <?php
 
 $titre = "Liste des films";
