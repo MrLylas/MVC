@@ -57,6 +57,7 @@ use Controller\CinemaController;
         case "addComedianForm" : $ctrlPerson->addComedianForm();break;
         case "addMovieForm" : $ctrlCinema->addMovieForm();break;
         case "addDirectorForm" : $ctrlPerson->addDirectorForm();break;
+        case "addCastingForm" : $ctrlCinema->addCastingForm();break;
 
         //Add
 
@@ -64,6 +65,7 @@ use Controller\CinemaController;
         case "addComedian" : $ctrlPerson->addComedian();break;
         case "addMovie" : $ctrlCinema->addMovie();break;
         case "addDirector" : $ctrlPerson->addDirector();break;
+      //   case "addCasting" : $ctrlCinema->addCasting();break;
 
     }
- }
+   };

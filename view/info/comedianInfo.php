@@ -5,6 +5,7 @@
 foreach($requete->fetchAll() as $actor) { ?>
     <div class="actor">
         <?= $actor["person_fullname"]?>
+        <?= $actor["person_fullname"]?>
         <?= $actor["gender"]?>
         <?= $actor["birth_date"]?>
     </div>

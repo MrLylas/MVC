@@ -36,7 +36,7 @@ class PersonController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-        SELECT CONCAT(person_forename,' ',person_name) AS person_fullname, per.gender, per.birth_date
+        SELECT per.poster,CONCAT(person_forename,' ',person_name) AS person_fullname, per.gender, per.birth_date
         FROM comedian com
         INNER JOIN person per 
         ON per.id_person = com.id_person

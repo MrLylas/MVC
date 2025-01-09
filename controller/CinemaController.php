@@ -91,6 +91,14 @@ class CinemaController {
         }
         require "view/list/listFilms.php";
     }
+
+    public function addCastingForm(){
+
+        require "view/form/addCastingForm.php";
+        
+    }
+
+    
     
 
 }

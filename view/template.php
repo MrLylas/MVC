@@ -12,10 +12,11 @@
         <a href="index.php?action=mainPage"><h1>PDO Cinema</h1></a>
         <h2><?=$titre_secondaire?></h2>
         <div class="menu">
-            <a href="index.php?action=listActeurs"><div class="btnMenu">Acteurs</div></a>
+            <a href="index.php?action=listActeurs"><div class="btnMenu">Actors</div></a>
             <a href="index.php?action=listDirector"><div class="btnMenu">Directors</div></a>
-            <a href="index.php?action=listFilms"><div class="btnMenu">Films</div></a>
-            <a href="index.php?action=listCategory"><div class="btnMenu">Catégories</div></a>
+            <a href="index.php?action=addCastingForm"><div class="btnMenu">Add Casting</div></a>
+            <a href="index.php?action=listFilms"><div class="btnMenu">Movie</div></a>
+            <a href="index.php?action=listCategory"><div class="btnMenu">Categories</div></a>
         </div>
     </nav><br>
         <div id="wrapper">
