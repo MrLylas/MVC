@@ -1,21 +1,39 @@
 <?php ob_start();?>
 
 <form action="index.php?action=addCasting" method="post">
-    <label for="Name">Comedian name</label>
-    <input type="text" name="ComedianName" id="ComedianName"><br>
-    <label for="Forename">Comedian forename</label>
-    <input type="text" name="ComedianForename" id="ComedianForename"><br>
-    <label for="Nationality">Comedian nationality</label>
-    <input type="text" name="ComedianNationality" id="ComedianNationality"><br>
-    <label for="Birthdate">Comedian birthdate</label>
-    <input type="date" name="ComedianBirthdate" id="ComedianBirthdate"><br>
-    <label for="Gender">Comedian gender</label>
-    <input type="text" name="ComedianGender" id="ComedianGender"><br>
-    <label for="Movie">Movie name</label>
-    <input type="text" name="MovieName" id="MovieName"><br>
-    <label for="Role">Comedian role</label>
-    <input type="text" name="ComedianRole" id="ComedianRole"><br>
-    <input type="submit" name="submit" id="submit">
+    
+<label for="ComedianName">Comedian</label>
+    <select id="ComedianName" name="id_comedian">
+        <?php
+            foreach ($comedians->fetchall() as $comedian) {
+            ?>  
+            <option value='<?=$comedian['id_comedian']?>'><?=$comedian['comedian_full_name']?></option>
+        
+        <?php }?> 
+    </select><br>
+
+<label for="MovieName">Movie</label>
+<select id="MovieName" name="id_movie">
+    <?php
+        foreach ($movies->fetchall() as $movie) {
+        ?>  
+        <option value='<?=$movie['id_movie']?>'><?=$movie['movie_name']?></option>
+    
+    <?php }?> 
+</select><br>
+
+<label for="ComedianRole">Role</label>
+<select id="RoleName" name="id_role">
+    <?php
+        foreach ($roles->fetchall() as $role) {
+        ?>  
+        <option value='<?=$role['id_role']?>'><?=$role['role_name']?></option>
+    
+    <?php }?> 
+</select><br>
+
+<input type="submit" name="submit" id="submit">
+
 </form>
 
 <?php

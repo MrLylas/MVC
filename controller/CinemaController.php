@@ -94,9 +94,61 @@ class CinemaController {
 
     public function addCastingForm(){
 
+        $pdo = Connect::seConnecter();
+        
+        
+            $comedians = $pdo->query(" SELECT com.id_comedian , CONCAT (person_name,' ',person_forename) AS comedian_full_name FROM person per INNER JOIN comedian com ON per.id_person = com.id_person");
+
+            $movies = $pdo->query (" SELECT mov.id_movie , mov.movie_name FROM movie mov");
+            
+            $roles = $pdo->query (" SELECT id_role, role_name FROM movie_role");
+
         require "view/form/addCastingForm.php";
         
     }
+
+    public function addCasting(){
+
+        //Lors de l'appui du bouton submit lancer la condition :
+
+        if(isset($_POST['submit'])){
+
+            //Application des filtres sur les données récupérées du formulaires
+
+            $ComedianName = filter_input(INPUT_POST,"ComedianName",FILTER_SANITIZE_SPECIAL_CHARS);
+            $MovieName = filter_input(INPUT_POST,"MovieName",FILTER_SANITIZE_SPECIAL_CHARS);
+            $RoleName = filter_input(INPUT_POST,"RoleName",FILTER_SANITIZE_SPECIAL_CHARS);
+
+
+            //la condition se lance si les données entrée entrées sont valides : 
+
+            if($ComedianName && $MovieName && $RoleName){
+
+                //Préparation de la requête :
+
+                $pdo = Connect :: seConnecter();
+                $addCasting = $pdo->prepare("
+
+                        INSERT INTO have (id_movie,id_comedian,id_role)
+                        VALUES (:ComedianName, :MovieName, :RoleName);
+
+                ");
+
+                //Execution de la requête :
+            
+                $addCasting->execute([
+                    "ComedianName"=>$ComedianName,
+                    "MovieName"=>$MovieName,
+                    "RoleName"=>$RoleName
+                ]);
+
+
+                header("Location:index.php?action=listActeurs");
+            }
+        }
+        require "view/listActeurs.php";
+    }
+
 
     
     
