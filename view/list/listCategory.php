@@ -1,17 +1,12 @@
 <?php ob_start();?>
 
 <table class="movieTable">
-    <thead>
-        <tr>
-            <th>Categories</th>
-        </tr>
-    </thead>
     <tbody>
         <?php
             foreach($requete->fetchAll() as $category){ ?>
-            <a href="index.php?action=ByCategory&id=<?= $category["id_type"] ?>">
+            <a href="index.php?action=ByCategory&id=<?= $category["id_type"] ?>"><p class="list">
                 <?=$category["type_name"]?>
-            </a>
+            </p></a>
         <?php } ?>
     </tbody>
 </table>

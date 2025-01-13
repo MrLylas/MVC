@@ -35,13 +35,17 @@ use Controller\CinemaController;
  if(isset($_GET["action"])){
     switch ($_GET["action"]){
 
+         //Main
+
+        case "mainPage" : $ctrlMainPage->mainPage();break;
+
          //List
 
         case "listFilms" : $ctrlCinema->listFilms();break;
         case "listCategory" : $ctrlCategory->listCategory();break;
         case "listDirector" : $ctrlPerson->listDirectors();break;
         case "listActeurs" : $ctrlPerson->listActeurs();break;
-        case "mainPage" : $ctrlMainPage->mainPage();break;
+        
 
         //Info
 
@@ -65,7 +69,10 @@ use Controller\CinemaController;
         case "addComedian" : $ctrlPerson->addComedian();break;
         case "addMovie" : $ctrlCinema->addMovie();break;
         case "addDirector" : $ctrlPerson->addDirector();break;
-      //   case "addCasting" : $ctrlCinema->addCasting();break;
+        case "addCasting" : $ctrlCinema->addCasting();break;
 
-    }
+        
+      }
+   }else{
+      $ctrlMainPage->redirect();
    };

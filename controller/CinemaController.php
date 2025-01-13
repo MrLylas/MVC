@@ -10,7 +10,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT movie_name, release_date, id_movie
+            SELECT movie_name, release_date, id_movie,movie_poster
             FROM movie
         ");  
         
@@ -115,38 +115,39 @@ class CinemaController {
 
             //Application des filtres sur les données récupérées du formulaires
 
-            $ComedianName = filter_input(INPUT_POST,"ComedianName",FILTER_SANITIZE_SPECIAL_CHARS);
-            $MovieName = filter_input(INPUT_POST,"MovieName",FILTER_SANITIZE_SPECIAL_CHARS);
-            $RoleName = filter_input(INPUT_POST,"RoleName",FILTER_SANITIZE_SPECIAL_CHARS);
+            $comedianName = filter_input(INPUT_POST,"comedianName",FILTER_SANITIZE_SPECIAL_CHARS);
+            $movieName = filter_input(INPUT_POST,"movieName",FILTER_SANITIZE_SPECIAL_CHARS);
+            $roleName = filter_input(INPUT_POST,"roleName",FILTER_SANITIZE_SPECIAL_CHARS);
 
 
             //la condition se lance si les données entrée entrées sont valides : 
 
-            if($ComedianName && $MovieName && $RoleName){
+            if($comedianName && $movieName && $roleName){
 
                 //Préparation de la requête :
 
-                $pdo = Connect :: seConnecter();
+                $pdo = Connect::seConnecter();
                 $addCasting = $pdo->prepare("
 
                         INSERT INTO have (id_movie,id_comedian,id_role)
-                        VALUES (:ComedianName, :MovieName, :RoleName);
+                        VALUES (:comedianName, :movieName, :roleName);
 
                 ");
 
                 //Execution de la requête :
             
                 $addCasting->execute([
-                    "ComedianName"=>$ComedianName,
-                    "MovieName"=>$MovieName,
-                    "RoleName"=>$RoleName
+                    "comedianName"=>$comedianName,
+                    "movieName"=>$movieName,
+                    "roleName"=>$roleName
                 ]);
 
-
-                header("Location:index.php?action=listActeurs");
+        
+                header("location: index.php?action=listActeurs");
             }
+            // require "view/list/listActeurs.php";
         }
-        require "view/listActeurs.php";
+
     }
 
 

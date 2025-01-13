@@ -5,12 +5,16 @@
 
 <?php
     foreach($requete->fetchAll() as $film){ ?>
-        <tr>
+        <div class="card">
+        <img src="public/images/movie/<?php if ($film["movie_poster"]) {echo $film["movie_poster"] ;
+                    } else 
+                        {echo "placeholder.svg?height=350&width=250";
+                    } ?>"> 
         <a href="index.php?action=filmInfo&id=<?= $film['id_movie'] ?>">
             <?=$film["movie_name"]?>
             <?=$film["release_date"]?>
         </a>
-        </tr>
+        </div>
 <?php } ?>
 
 <a href="index.php?action=addMovieForm">

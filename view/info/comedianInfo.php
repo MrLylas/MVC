@@ -4,6 +4,7 @@
         <?php
 foreach($requete->fetchAll() as $actor) { ?>
     <div class="actor">
+        <?= $actor["poster"]?>
         <?= $actor["person_fullname"]?>
         <?= $actor["person_fullname"]?>
         <?= $actor["gender"]?>
@@ -14,7 +15,6 @@ foreach($requete->fetchAll() as $actor) { ?>
 foreach($ComedianMovieInfo->fetchAll() as $movie) { ?>
     <div class="movie">
         <?= $movie["movie_poster"]?>
-        
         <p><?= $movie["movie_name"]?></p>
         <p><?= $movie["duration"]?> min</p>
         <p><?= $movie["rating"]?>/10</p>

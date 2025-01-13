@@ -2,6 +2,7 @@
 
 namespace Controller;
 use Model\Connect;
+use PDOException;
 
 class PersonController {
 
@@ -10,20 +11,14 @@ class PersonController {
     public function listActeurs(){
     
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-            SELECT CONCAT (per.person_name,' ', per.person_forename) AS full_name, per.id_person, com.id_comedian
-            FROM comedian com
-            INNER JOIN person per
-            ON com.id_person = per.id_person
-        ");  
-
+        $comedians = $pdo->query("SELECT CONCAT(per.person_name,' ', per.person_forename) AS full_name, per.id_person, per.person_forename, per.person_name, com.id_comedian, per.poster FROM comedian com INNER JOIN person per ON com.id_person = per.id_person");
         require "view/list/listActeurs.php";}
 
     public function listDirectors(){
 
         $pdo = Connect::seConnecter();
         $listDirectors = $pdo->query("
-            SELECT dir.id_director, per.id_person, CONCAT(person_forename,' ',person_name) AS complete_name
+            SELECT dir.id_director, per.id_person, CONCAT(person_forename,' ',person_name) AS complete_name, per.poster
             FROM director dir
             INNER JOIN person per
             ON dir.id_person = per.id_person 
@@ -36,7 +31,7 @@ class PersonController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-        SELECT per.poster,CONCAT(person_forename,' ',person_name) AS person_fullname, per.gender, per.birth_date
+        SELECT per.poster,CONCAT(person_forename,' ',person_name) AS person_fullname, per.gender, per.birth_date, per.poster
         FROM comedian com
         INNER JOIN person per 
         ON per.id_person = com.id_person

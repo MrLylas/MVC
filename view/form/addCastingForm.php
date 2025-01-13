@@ -2,8 +2,8 @@
 
 <form action="index.php?action=addCasting" method="post">
     
-<label for="ComedianName">Comedian</label>
-    <select id="ComedianName" name="id_comedian">
+<label for="comedianName">Comedian</label>
+    <select id="comedianName" name="comedianName">
         <?php
             foreach ($comedians->fetchall() as $comedian) {
             ?>  
@@ -12,8 +12,8 @@
         <?php }?> 
     </select><br>
 
-<label for="MovieName">Movie</label>
-<select id="MovieName" name="id_movie">
+<label for="movieName">Movie</label>
+<select id="movieName" name="movieName">
     <?php
         foreach ($movies->fetchall() as $movie) {
         ?>  
@@ -22,8 +22,8 @@
     <?php }?> 
 </select><br>
 
-<label for="ComedianRole">Role</label>
-<select id="RoleName" name="id_role">
+<label for="comedianRole">Role</label>
+<select id="roleName" name="roleName">
     <?php
         foreach ($roles->fetchall() as $role) {
         ?>  

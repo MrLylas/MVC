@@ -3,10 +3,15 @@
 
 <?php
     foreach($listDirectors->fetchAll() as $director){ ?>
-
+    <div class="card">
+        <img src="public/images/<?php if ($director["poster"]) {echo $director["poster"] ;
+                        } else 
+                            {echo "placeholder.svg?height=350&width=250";
+                        } ?>"> 
         <a href="index.php?action=DirectorInfo&id=<?= $director['id_director'] ?>">
             <?=$director["complete_name"]?>
         </a>
+    </div>
 
 <?php } ?>
 
